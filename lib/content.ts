@@ -64,7 +64,7 @@ export const roles: Role[] = [
     location: "Bengaluru, Karnataka",
     groups: [
       {
-        heading: "Unstructured data and retrieval",
+        heading: "Document processing and retrieval",
         items: [
           "Built a document extraction pipeline across more than 20 PDF and HTML parsers, with section hierarchy kept through token-budget chunking. Prototyped LLM-based structure correction for malformed documents.",
           "Improved retrieval recall by 20% on identifier- and keyword-heavy queries with hybrid Milvus dense retrieval and Elasticsearch BM25, using weighted reciprocal rank fusion and denormalized attribute filtering.",
@@ -73,7 +73,7 @@ export const roles: Role[] = [
         ],
       },
       {
-        heading: "Low-latency serving",
+        heading: "Model serving, caching, and scaling",
         items: [
           "Built a self-hosted vLLM service on Kubernetes for an FP8-quantized 27B model, exposed as an OpenAI-compatible streaming API. It handles 100K+ requests a day. Moving that traffic off a hosted API reduced LLM spend from about $7,000 to $1,000 a month, and batch-size and KV-cache tuning increased throughput per GPU by 67%.",
           "Moved reranker and embedding serving from ONNX Runtime to NVIDIA Triton, with gRPC connection pooling, dynamic batching, and separate priority for query and ingestion. Query latency fell by up to 40×.",
@@ -82,13 +82,13 @@ export const roles: Role[] = [
         ],
       },
       {
-        heading: "Evaluation",
+        heading: "Continuous evaluation",
         items: [
           "Set up LLM-as-a-judge regression tests across customer deployments, checking correctness and semantic faithfulness. This cut manual QA effort by 70%.",
         ],
       },
       {
-        heading: "Contributions",
+        heading: "Also contributed to",
         items: [
           "Streaming ASR over WebSocket using faster-whisper and Qwen3-ASR, with a wav2vec2 check to drop hallucinated transcripts during silence.",
           "PII detection covering 40+ entity types, moving from GLiNER to LLM-based extraction and adding Redis caching.",
@@ -171,7 +171,7 @@ export const activities = [
     period: "Sep 2021 — Oct 2023",
     title: "Coding Subsystem Lead",
     org: "Robotics and Circuits",
-    kind: "Student robotics club",
+    kind: "Student club",
     location: "Manipal",
     points: [
       "Global top-12 finish in the 2022 International Virtual RobotX Competition, on a real-time perception system.",

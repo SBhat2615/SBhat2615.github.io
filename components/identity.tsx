@@ -1,10 +1,7 @@
-import { FileText, Mail } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile, verse } from "@/lib/content";
 import { asset } from "@/lib/site";
-
-const linkClass =
-  "text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-saffron";
 
 export function Identity() {
   return (
@@ -50,15 +47,6 @@ export function Identity() {
           <Button
             nativeButton={false}
             className="h-10 px-4"
-            render={<a href={`mailto:${profile.email}`} />}
-          >
-            <Mail />
-            Email
-          </Button>
-          <Button
-            nativeButton={false}
-            variant="outline"
-            className="h-10 px-4"
             render={
               <a href={asset(profile.resumePath)} download="Siddhartha-Bhat-Resume.pdf" />
             }
@@ -66,20 +54,16 @@ export function Identity() {
             <FileText />
             Resume
           </Button>
-          <ul className="ml-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-            <li>
-              <a href={profile.github} target="_blank" rel="noreferrer" className={linkClass}>
-                GitHub
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </li>
-            <li>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" className={linkClass}>
-                LinkedIn
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </li>
-          </ul>
+          <Button
+            nativeButton={false}
+            variant="outline"
+            className="h-10 px-4"
+            render={<a href={profile.github} target="_blank" rel="noreferrer" />}
+          >
+            GitHub
+            <ArrowUpRight />
+            <span className="sr-only"> (opens in a new tab)</span>
+          </Button>
         </div>
       </div>
     </header>

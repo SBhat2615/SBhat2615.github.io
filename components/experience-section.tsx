@@ -44,7 +44,8 @@ export function ExperienceSection() {
               {role.groups.map((group) => (
                 <div key={group.heading || role.org}>
                   {group.heading ? (
-                    <h4 className="mb-2 text-sm font-medium text-foreground">
+                    <h4 className="mb-2.5 flex items-center gap-2 text-xs font-semibold tracking-[0.12em] text-foreground uppercase">
+                      <span aria-hidden="true" className="h-px w-4 bg-saffron" />
                       {group.heading}
                     </h4>
                   ) : null}
