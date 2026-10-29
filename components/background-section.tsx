@@ -1,53 +1,61 @@
-import { Period } from "@/components/period";
 import { Section } from "@/components/section";
 import { activities, education, profile, skills } from "@/lib/content";
-import { asset } from "@/lib/site";
 
 const linkClass =
-  "text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-saffron";
+  "text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-saffron";
+
+const contacts = [
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, external: false },
+  { label: "Phone", value: profile.phoneDisplay, href: profile.phoneHref, external: false },
+  { label: "LinkedIn", value: profile.linkedinHandle, href: profile.linkedin, external: true },
+  { label: "Twitter", value: profile.twitterHandle, href: profile.twitter, external: true },
+];
 
 export function BackgroundSection() {
   return (
     <>
       <Section id="education" title="Education" tone="base">
-        <div className="grid gap-2 sm:grid-cols-[8.5rem_1fr] sm:gap-6">
-          <Period value={education.period} />
-          <div>
-            <h3 className="text-base font-medium text-foreground">
-              {education.credential}
-            </h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              {education.school} · {education.location} · {education.detail}
-            </p>
-          </div>
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+          <h3 className="font-display text-2xl tracking-tight text-foreground">
+            {education.school}
+          </h3>
+          <p className="shrink-0 font-mono text-xs tracking-wide text-muted-foreground">
+            {education.period}
+          </p>
         </div>
+        <p className="mt-1.5 text-sm">
+          <span className="font-medium text-saffron">{education.credential}</span>
+          <span className="text-muted-foreground">
+            {" "}
+            · {education.detail} · {education.location}
+          </span>
+        </p>
 
         {activities.map((activity) => (
-          <div
-            key={activity.title}
-            className="mt-8 grid gap-2 sm:grid-cols-[8.5rem_1fr] sm:gap-6"
-          >
-            <Period value={activity.period} />
-            <div>
-              <h3 className="text-base font-medium text-foreground">
-                {activity.title}
-                <span className="text-muted-foreground"> · </span>
+          <div key={activity.title} className="mt-8 border-l border-border pl-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+              <p className="text-base font-medium text-foreground">
                 {activity.org}
-              </h3>
-              <ul className="mt-3 space-y-2.5">
-                {activity.points.map((point) => (
-                  <li
-                    key={point}
-                    className="grid grid-cols-[0.75rem_1fr] text-[15px] leading-relaxed text-pretty text-muted-foreground"
-                  >
-                    <span aria-hidden="true" className="text-muted-foreground/60">
-                      –
-                    </span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+                <span className="font-normal text-muted-foreground"> · {activity.kind}</span>
+              </p>
+              <p className="shrink-0 font-mono text-xs tracking-wide text-muted-foreground">
+                {activity.period}
+              </p>
             </div>
+            <p className="mt-1 text-sm text-muted-foreground">{activity.title}</p>
+            <ul className="mt-3 space-y-2">
+              {activity.points.map((point) => (
+                <li
+                  key={point}
+                  className="grid grid-cols-[0.75rem_1fr] text-[15px] leading-relaxed text-pretty text-muted-foreground"
+                >
+                  <span aria-hidden="true" className="text-muted-foreground/60">
+                    –
+                  </span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
 
@@ -69,40 +77,23 @@ export function BackgroundSection() {
       </Section>
 
       <Section id="contact" title="Contact" tone="warm">
-        <a
-          href={`mailto:${profile.email}`}
-          className="font-display text-2xl tracking-tight text-foreground underline decoration-saffron/50 underline-offset-[6px] hover:decoration-saffron sm:text-3xl"
-        >
-          {profile.email}
-        </a>
-        <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-          <li>
-            <a href={profile.phoneHref} className={linkClass}>
-              {profile.phoneDisplay}
-            </a>
-          </li>
-          <li>
-            <a href={profile.github} target="_blank" rel="noreferrer" className={linkClass}>
-              GitHub
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </li>
-          <li>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className={linkClass}>
-              LinkedIn
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href={asset(profile.resumePath)}
-              download="Siddhartha-Bhat-Resume.pdf"
-              className={linkClass}
-            >
-              Resume
-            </a>
-          </li>
-        </ul>
+        <dl className="grid grid-cols-[5.5rem_1fr] gap-x-4 gap-y-3 text-[15px]">
+          {contacts.map((item) => (
+            <div key={item.label} className="contents">
+              <dt className="text-muted-foreground">{item.label}</dt>
+              <dd className="min-w-0 break-words">
+                <a
+                  href={item.href}
+                  className={linkClass}
+                  {...(item.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                >
+                  {item.value}
+                  {item.external ? <span className="sr-only"> (opens in a new tab)</span> : null}
+                </a>
+              </dd>
+            </div>
+          ))}
+        </dl>
       </Section>
     </>
   );

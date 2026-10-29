@@ -5,7 +5,7 @@ import { projects } from "@/lib/content";
 export function ProjectsSection() {
   return (
     <Section id="projects" title="Projects" tone="raised">
-      <ul className="grid gap-4 sm:grid-cols-2">
+      <ul className="grid gap-4">
         {projects.map((project) => (
           <li key={project.name}>
             <a

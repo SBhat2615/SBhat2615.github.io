@@ -12,18 +12,19 @@ export const profile = {
   github: "https://github.com/SBhat2615",
   githubHandle: "SBhat2615",
   linkedin: "https://www.linkedin.com/in/siddhartha-bhat-9236b11b6",
+  linkedinHandle: "siddhartha-bhat-9236b11b6",
+  twitter: "https://x.com/Siddhar93196627",
+  twitterHandle: "@Siddhar93196627",
   resumePath: "/Siddhartha-Bhat-Resume.pdf",
   tagline: "Machine Learning Engineer · AI Tinkerer",
-  lede: "I enjoy solving practical problems and understanding technology in depth.",
-  exploring: "LLM inference and retrieval systems",
 };
 
 export const verse = {
   lines: [
-    "ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत्\u00a0।",
-    "तेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम्\u00a0॥\u00a0१\u00a0॥",
+    "युक्तः कर्मफलं त्यक्त्वा शान्तिमाप्नोति नैष्ठिकीम्\u00a0।",
+    "अयुक्तः कामकारेण फले सक्तो निबध्यते\u00a0॥",
   ],
-  source: "Īśāvāsya Upaniṣad, verse 1",
+  source: "Bhagavad Gītā 5.12",
 };
 
 export const nav = [
@@ -34,30 +35,11 @@ export const nav = [
   { id: "contact", label: "Contact" },
 ] as const;
 
-export const about = {
-  avaamo: [
-    "At Avaamo I work on the path from raw enterprise content to an answer a user can trust. Most of that content is unstructured: PDFs and HTML pages that have to be parsed without losing their section structure, chunked, and indexed so that both semantic and keyword search can find the right passage.",
-    "On the serving side I work on keeping responses fast and affordable: self-hosted LLM inference, embedding and reranker serving, caching, and autoscaling the workers behind them.",
-    "I also work on evaluation and observability, with automated regression tests that check answer quality across customer deployments, and monitoring that shows how the services behave in production.",
-  ],
-  earlier: [
-    {
-      org: "Samsung R&D Institute India",
-      text: "Fine-tuned CodeT5 to generate code for CVE security patches, as a PRISM intern.",
-    },
-    {
-      org: "IoTracX",
-      text: "Trained a YOLOv8 model to find people in drone images of forest-fire zones and ran it on an edge device.",
-    },
-  ],
-  areas: [
-    { label: "LLM serving", detail: "Self-hosting and scaling model inference" },
-    { label: "Search and RAG", detail: "Vector, keyword, and hybrid retrieval with reranking" },
-    { label: "Backend", detail: "APIs, async workers, queues, and caching" },
-    { label: "Infrastructure", detail: "Containers, Kubernetes, autoscaling, and monitoring" },
-    { label: "Computer vision and NLP", detail: "Object detection and fine-tuning transformers" },
-  ],
-};
+export const about = [
+  "At Avaamo, I work on turning unstructured enterprise data into answers people can find and trust. My work spans document processing, search and retrieval, and low-latency model serving. I also focus on making these systems efficient and reliable in production through caching, autoscaling, continuous evaluation, and observability.",
+  "Before Avaamo, I was a PRISM intern at Samsung R&D Institute India, where I fine-tuned CodeT5 for code generation from CVE security patches. At IoTracX, I trained a YOLOv8 model to detect people in drone imagery from forest-fire zones and deployed it on an edge device.",
+  "I graduated from Manipal Institute of Technology in 2024 with a B.Tech in Computer Science and Engineering.",
+];
 
 export type HighlightGroup = {
   heading: string;
@@ -154,6 +136,13 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: "Job board",
+    href: "https://github.com/SBhat2615/job-board",
+    detail:
+      "A local tracker for job applications. Each saved posting keeps the referral contact and a follow-up date, and moves through feed, outreach, applied, or discarded. It can pull roles from public Greenhouse, Lever, and Ashby boards and merges the same role listed on two boards. Development is paused.",
+    tags: ["FastAPI", "SQLite", "pytest"],
+  },
+  {
     name: "Fungus ROI Detection",
     href: "https://github.com/SBhat2615/Fungus-ROI-Detection",
     detail:
@@ -182,6 +171,7 @@ export const activities = [
     period: "Sep 2021 — Oct 2023",
     title: "Coding Subsystem Lead",
     org: "Robotics and Circuits",
+    kind: "Student robotics club",
     location: "Manipal",
     points: [
       "Global top-12 finish in the 2022 International Virtual RobotX Competition, on a real-time perception system.",

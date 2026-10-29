@@ -46,14 +46,7 @@ export function Identity() {
           </figcaption>
         </figure>
 
-        <div className="mt-12 max-w-xl">
-          <p className="text-base leading-7 text-foreground">{profile.lede}</p>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Currently exploring {profile.exploring}.
-          </p>
-        </div>
-
-        <div className="mt-8 flex flex-wrap items-center gap-2">
+        <div className="mt-12 flex flex-wrap items-center gap-2">
           <Button
             nativeButton={false}
             className="h-10 px-4"

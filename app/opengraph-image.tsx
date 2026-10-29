@@ -42,7 +42,7 @@ export default function OpenGraphImage() {
             {`${profile.role} · ${profile.company}`}
           </div>
           <div style={{ marginTop: 16, fontSize: 28, color: "#a39e95", maxWidth: 900 }}>
-            {profile.lede}
+            Unstructured data, retrieval, and low-latency model serving.
           </div>
         </div>
       </div>

@@ -82,7 +82,7 @@ const jsonLd = {
     name: "Avaamo",
     url: "https://avaamo.ai",
   },
-  sameAs: [profile.github, profile.linkedin],
+  sameAs: [profile.github, profile.linkedin, profile.twitter],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
