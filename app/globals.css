@@ -153,62 +153,13 @@
 
 .site-nav a[aria-current="true"] {
   color: var(--foreground);
-}
-
-.site-nav .nav-line {
-  display: none;
-  height: 1px;
-  width: 1.5rem;
-  background: currentColor;
-  transition: width 200ms ease;
-}
-
-@media (min-width: 64rem) {
-  .site-nav .nav-line {
-    display: block;
-  }
-}
-
-.site-nav a:hover .nav-line,
-.site-nav a:focus-visible .nav-line {
-  width: 2.5rem;
-}
-
-.site-nav a[aria-current="true"] .nav-line {
-  width: 3rem;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-nav .nav-line {
-    transition: none;
-  }
-}
-
-.dim-item {
-  border-radius: 0.9rem;
-  transition:
-    opacity 180ms ease,
-    background-color 180ms ease;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .dim-group:hover .dim-item {
-    opacity: 0.48;
-  }
-
-  .dim-group:hover .dim-item:hover,
-  .dim-item:focus-within {
-    opacity: 1;
-    background: color-mix(in srgb, var(--card) 86%, var(--copper) 8%);
-  }
+  text-decoration-line: underline;
+  text-decoration-color: var(--copper);
+  text-underline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .dim-item {
-    transition: none;
   }
 }

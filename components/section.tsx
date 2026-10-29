@@ -13,11 +13,11 @@ export function Section({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="mb-20 scroll-mt-8 lg:scroll-mt-24"
+      className="mb-16 scroll-mt-8"
     >
       <h2
         id={`${id}-title`}
-        className="mb-6 text-sm font-semibold tracking-[0.2em] text-muted-foreground uppercase lg:sr-only"
+        className="mb-5 text-sm font-semibold tracking-[0.16em] text-copper uppercase"
       >
         {title}
       </h2>

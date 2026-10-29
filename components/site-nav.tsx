@@ -30,16 +30,15 @@ const sectionSpy = `
 
 export function SiteNav() {
   return (
-    <nav aria-label="Sections" className="site-nav mt-10">
-      <ul className="grid grid-cols-2 gap-x-6 gap-y-1 lg:flex lg:flex-col lg:gap-1">
+    <nav aria-label="Sections" className="site-nav mt-8">
+      <ul className="flex flex-wrap gap-x-5 gap-y-2">
         {nav.map((item) => (
           <li key={item.id}>
             <a
               href={`#${item.id}`}
               aria-current={item.id === nav[0].id ? "true" : undefined}
-              className="group inline-flex items-center gap-3 py-1 text-xs font-semibold tracking-[0.18em] text-muted-foreground uppercase hover:text-foreground"
+              className="text-sm text-muted-foreground hover:text-foreground"
             >
-              <span aria-hidden="true" className="nav-line hidden lg:block" />
               {item.label}
             </a>
           </li>
