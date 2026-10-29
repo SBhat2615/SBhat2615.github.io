@@ -3,10 +3,13 @@ import { Section } from "@/components/section";
 import { activities, education, profile, skills } from "@/lib/content";
 import { asset } from "@/lib/site";
 
+const linkClass =
+  "text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-saffron";
+
 export function BackgroundSection() {
   return (
     <>
-      <Section id="education" title="Education">
+      <Section id="education" title="Education" tone="base">
         <div className="grid gap-2 sm:grid-cols-[8.5rem_1fr] sm:gap-6">
           <Period value={education.period} />
           <div>
@@ -14,87 +17,92 @@ export function BackgroundSection() {
               {education.credential}
             </h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              {education.school} · {education.location}
+              {education.school} · {education.location} · {education.detail}
             </p>
-            <p className="mt-2 text-sm text-foreground">{education.detail}</p>
           </div>
         </div>
 
-        <div className="mt-10">
-          <h3 className="text-sm font-medium text-foreground">Activities</h3>
-          {activities.map((activity) => (
-            <div
-              key={activity.title}
-              className="mt-4 grid gap-2 sm:grid-cols-[8.5rem_1fr] sm:gap-6"
-            >
-              <Period value={activity.period} />
-              <div>
-                <p className="text-base font-medium text-foreground">
-                  {activity.title}
-                  <span className="text-muted-foreground"> · </span>
-                  {activity.org}
-                </p>
-                <p className="mt-1 text-sm text-muted-foreground">{activity.location}</p>
-                <ul className="mt-3 space-y-2.5">
-                  {activity.points.map((point) => (
-                    <li
-                      key={point}
-                      className="text-[15px] leading-relaxed text-pretty text-muted-foreground"
-                    >
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        {activities.map((activity) => (
+          <div
+            key={activity.title}
+            className="mt-8 grid gap-2 sm:grid-cols-[8.5rem_1fr] sm:gap-6"
+          >
+            <Period value={activity.period} />
+            <div>
+              <h3 className="text-base font-medium text-foreground">
+                {activity.title}
+                <span className="text-muted-foreground"> · </span>
+                {activity.org}
+              </h3>
+              <ul className="mt-3 space-y-2.5">
+                {activity.points.map((point) => (
+                  <li
+                    key={point}
+                    className="grid grid-cols-[0.75rem_1fr] text-[15px] leading-relaxed text-pretty text-muted-foreground"
+                  >
+                    <span aria-hidden="true" className="text-muted-foreground/60">
+                      –
+                    </span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+
+        <h3 className="mt-12 text-sm font-medium text-foreground">Skills</h3>
+        <dl className="mt-4 grid gap-5 sm:grid-cols-2">
+          {skills.map((group) => (
+            <div key={group.label}>
+              <dt className="font-mono text-xs tracking-wide text-saffron">{group.label}</dt>
+              <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                {group.items.map((item) => (
+                  <span key={item} className="skill-chip">
+                    {item}
+                  </span>
+                ))}
+              </dd>
             </div>
           ))}
-        </div>
-
-        <div className="mt-10">
-          <h3 className="text-sm font-medium text-foreground">Skills</h3>
-          <dl className="mt-4 grid gap-5 sm:grid-cols-2">
-            {skills.map((group) => (
-              <div key={group.label}>
-                <dt className="text-sm font-medium text-foreground">{group.label}</dt>
-                <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  {group.items.map((item) => (
-                    <span key={item} className="skill-chip">
-                      {item}
-                    </span>
-                  ))}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        </dl>
       </Section>
 
-      <Section id="contact" title="Contact">
-        <p>
-          <a
-            href={`mailto:${profile.email}`}
-            className="text-base text-foreground underline decoration-border underline-offset-4 hover:decoration-copper"
-          >
-            {profile.email}
-          </a>
-        </p>
-        <p className="mt-2">
-          <a
-            href={profile.phoneHref}
-            className="text-sm text-muted-foreground underline decoration-border underline-offset-4 hover:text-foreground hover:decoration-copper"
-          >
-            {profile.phoneDisplay}
-          </a>
-        </p>
-        <p className="mt-4">
-          <a
-            href={asset(profile.resumePath)}
-            download="Siddhartha-Bhat-Resume.pdf"
-            className="text-sm text-muted-foreground underline decoration-border underline-offset-4 hover:text-foreground hover:decoration-copper"
-          >
-            Resume
-          </a>
-        </p>
+      <Section id="contact" title="Contact" tone="warm">
+        <a
+          href={`mailto:${profile.email}`}
+          className="font-display text-2xl tracking-tight text-foreground underline decoration-saffron/50 underline-offset-[6px] hover:decoration-saffron sm:text-3xl"
+        >
+          {profile.email}
+        </a>
+        <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+          <li>
+            <a href={profile.phoneHref} className={linkClass}>
+              {profile.phoneDisplay}
+            </a>
+          </li>
+          <li>
+            <a href={profile.github} target="_blank" rel="noreferrer" className={linkClass}>
+              GitHub
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+          <li>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className={linkClass}>
+              LinkedIn
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={asset(profile.resumePath)}
+              download="Siddhartha-Bhat-Resume.pdf"
+              className={linkClass}
+            >
+              Resume
+            </a>
+          </li>
+        </ul>
       </Section>
     </>
   );

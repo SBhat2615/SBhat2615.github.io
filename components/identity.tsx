@@ -1,70 +1,94 @@
 import { FileText, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SiteNav } from "@/components/site-nav";
-import { profile } from "@/lib/content";
+import { profile, verse } from "@/lib/content";
 import { asset } from "@/lib/site";
 
-const socials = [
-  { label: "GitHub", href: profile.github },
-  { label: "LinkedIn", href: profile.linkedin },
-];
+const linkClass =
+  "text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground hover:decoration-saffron";
 
 export function Identity() {
   return (
-    <header className="border-b border-border pb-8">
-      <p className="font-mono text-[11px] tracking-[0.18em] text-copper uppercase">
-        {profile.location}
-      </p>
-      <h1 className="mt-3 font-display text-4xl leading-none tracking-tight text-foreground sm:text-5xl">
-        {profile.name}
-      </h1>
-      <p className="mt-4 text-lg text-foreground">{profile.role}</p>
-      <p className="mt-1 text-sm text-muted-foreground">{profile.lede}</p>
-      <div className="mt-6 flex flex-wrap gap-2">
-        <Button
-          nativeButton={false}
-          className="h-10 px-4"
-          render={<a href={`mailto:${profile.email}`} />}
-        >
-          <Mail />
-          Email
-        </Button>
-        <Button
-          nativeButton={false}
-          variant="outline"
-          className="h-10 bg-card px-4"
-          render={
-            <a href={asset(profile.resumePath)} download="Siddhartha-Bhat-Resume.pdf" />
-          }
-        >
-          <FileText />
-          Resume
-        </Button>
-      </div>
-      <ul className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-        {socials.map((social) => (
-          <li key={social.label}>
-            <a
-              href={social.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted-foreground underline decoration-border underline-offset-4 hover:text-foreground hover:decoration-copper"
-            >
-              {social.label}
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </li>
-        ))}
-        <li>
+    <header id="top" className="hero-glow bg-band-base">
+      <div className="mx-auto max-w-3xl px-6 pt-16 pb-16 md:px-8 md:pt-24 md:pb-20">
+        <p className="font-mono text-xs tracking-[0.2em] text-saffron uppercase">
+          {profile.location}
+        </p>
+        <h1 className="mt-4 font-display text-5xl leading-none tracking-tight text-foreground sm:text-6xl">
+          {profile.name}
+        </h1>
+        <p className="mt-5 text-lg text-foreground">
+          {profile.tagline}
+          <span className="text-muted-foreground"> · </span>
           <a
-            href={profile.phoneHref}
-            className="text-muted-foreground underline decoration-border underline-offset-4 hover:text-foreground hover:decoration-copper"
+            href="https://avaamo.ai"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-border underline-offset-4 hover:decoration-saffron"
           >
-            {profile.phoneDisplay}
+            {profile.company}
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
-        </li>
-      </ul>
-      <SiteNav />
+        </p>
+
+        <figure className="mt-12 border-l-2 border-saffron/70 pl-4 sm:pl-6">
+          <blockquote
+            lang="sa"
+            className="font-sanskrit text-[1.05rem] leading-[1.9] text-foreground sm:text-2xl sm:leading-[1.8]"
+          >
+            {verse.lines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </blockquote>
+          <figcaption className="mt-3 text-sm text-muted-foreground">
+            {verse.source}
+          </figcaption>
+        </figure>
+
+        <div className="mt-12 max-w-xl">
+          <p className="text-base leading-7 text-foreground">{profile.lede}</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Currently exploring {profile.exploring}.
+          </p>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <Button
+            nativeButton={false}
+            className="h-10 px-4"
+            render={<a href={`mailto:${profile.email}`} />}
+          >
+            <Mail />
+            Email
+          </Button>
+          <Button
+            nativeButton={false}
+            variant="outline"
+            className="h-10 px-4"
+            render={
+              <a href={asset(profile.resumePath)} download="Siddhartha-Bhat-Resume.pdf" />
+            }
+          >
+            <FileText />
+            Resume
+          </Button>
+          <ul className="ml-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+            <li>
+              <a href={profile.github} target="_blank" rel="noreferrer" className={linkClass}>
+                GitHub
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </li>
+            <li>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className={linkClass}>
+                LinkedIn
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
   );
 }

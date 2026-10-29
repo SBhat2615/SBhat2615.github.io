@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono, Tiro_Devanagari_Sanskrit } from "next/font/google";
 import { description, profile } from "@/lib/content";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -17,6 +17,13 @@ const geistMono = Geist_Mono({
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const tiroSanskrit = Tiro_Devanagari_Sanskrit({
+  variable: "--font-tiro-sanskrit",
+  subsets: ["devanagari", "latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -49,8 +56,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f3efe6",
-  colorScheme: "light",
+  themeColor: "#0d0e10",
+  colorScheme: "dark",
 };
 
 const jsonLd = {
@@ -82,7 +89,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`dark ${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${tiroSanskrit.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <script

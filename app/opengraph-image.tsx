@@ -16,8 +16,8 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#f3efe6",
-          color: "#1c1915",
+          background: "#0d0e10",
+          color: "#ece7df",
           padding: "72px",
         }}
       >
@@ -27,10 +27,10 @@ export default function OpenGraphImage() {
               width: 18,
               height: 18,
               borderRadius: 99,
-              background: "#8c3b1e",
+              background: "#e3a857",
             }}
           />
-          <div style={{ fontSize: 24, letterSpacing: 4, textTransform: "uppercase" }}>
+          <div style={{ fontSize: 24, letterSpacing: 4, textTransform: "uppercase", color: "#e3a857" }}>
             Bengaluru
           </div>
         </div>
@@ -38,8 +38,10 @@ export default function OpenGraphImage() {
           <div style={{ fontSize: 84, lineHeight: 0.95, letterSpacing: -2 }}>
             {profile.name}
           </div>
-          <div style={{ marginTop: 24, fontSize: 34 }}>{profile.role}</div>
-          <div style={{ marginTop: 16, fontSize: 28, color: "#5c564c", maxWidth: 860 }}>
+          <div style={{ marginTop: 24, fontSize: 34 }}>
+            {profile.role} · {profile.company}
+          </div>
+          <div style={{ marginTop: 16, fontSize: 28, color: "#a39e95", maxWidth: 900 }}>
             {profile.lede}
           </div>
         </div>

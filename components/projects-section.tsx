@@ -1,29 +1,34 @@
+import { ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/section";
 import { projects } from "@/lib/content";
 
 export function ProjectsSection() {
   return (
-    <Section id="projects" title="Projects">
-      <ul>
+    <Section id="projects" title="Projects" tone="raised">
+      <ul className="grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (
-          <li
-            key={project.name}
-            className="border-t border-border py-6 first:border-t-0 first:pt-0"
-          >
-            <h3 className="text-base font-medium text-foreground">
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-                className="underline decoration-border underline-offset-4 hover:decoration-copper"
-              >
+          <li key={project.name}>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex h-full flex-col rounded-lg border border-border bg-card p-5 transition-colors hover:border-saffron/60"
+            >
+              <h3 className="flex items-center justify-between gap-3 text-base font-medium text-foreground">
                 {project.name}
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-pretty text-muted-foreground">
-              {project.detail}
-            </p>
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="size-4 text-muted-foreground transition-colors group-hover:text-saffron"
+                />
+              </h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-pretty text-muted-foreground">
+                {project.detail}
+              </p>
+              <p className="mt-4 font-mono text-xs text-muted-foreground">
+                {project.tags.join(" · ")}
+              </p>
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </li>
         ))}
       </ul>
