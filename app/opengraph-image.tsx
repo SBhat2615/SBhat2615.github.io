@@ -39,7 +39,7 @@ export default function OpenGraphImage() {
             {profile.name}
           </div>
           <div style={{ marginTop: 24, fontSize: 34 }}>
-            {profile.role} · {profile.company}
+            {`${profile.role} · ${profile.company}`}
           </div>
           <div style={{ marginTop: 16, fontSize: 28, color: "#a39e95", maxWidth: 900 }}>
             {profile.lede}
