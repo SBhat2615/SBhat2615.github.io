@@ -1,4 +1,4 @@
-import { ArrowUpRight, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile, verse } from "@/lib/content";
 import { asset } from "@/lib/site";
@@ -14,8 +14,8 @@ export function Identity() {
           {profile.name}
         </h1>
         <p className="mt-5 text-lg text-foreground">
-          {profile.tagline}
-          <span className="text-muted-foreground"> · </span>
+          {profile.role}
+          <span className="text-muted-foreground"> at </span>
           <a
             href="https://avaamo.ai"
             target="_blank"
@@ -53,16 +53,6 @@ export function Identity() {
           >
             <FileText />
             Resume
-          </Button>
-          <Button
-            nativeButton={false}
-            variant="outline"
-            className="h-10 px-4"
-            render={<a href={profile.github} target="_blank" rel="noreferrer" />}
-          >
-            GitHub
-            <ArrowUpRight />
-            <span className="sr-only"> (opens in a new tab)</span>
           </Button>
         </div>
       </div>

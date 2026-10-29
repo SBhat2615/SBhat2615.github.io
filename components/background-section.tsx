@@ -8,6 +8,7 @@ const contacts = [
   { label: "Email", value: profile.email, href: `mailto:${profile.email}`, external: false },
   { label: "Phone", value: profile.phoneDisplay, href: profile.phoneHref, external: false },
   { label: "LinkedIn", value: profile.linkedinHandle, href: profile.linkedin, external: true },
+  { label: "GitHub", value: profile.githubHandle, href: profile.github, external: true },
   { label: "Twitter", value: profile.twitterHandle, href: profile.twitter, external: true },
 ];
 

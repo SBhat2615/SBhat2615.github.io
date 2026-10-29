@@ -16,7 +16,6 @@ export const profile = {
   twitter: "https://x.com/Siddhar93196627",
   twitterHandle: "@Siddhar93196627",
   resumePath: "/Siddhartha-Bhat-Resume.pdf",
-  tagline: "Machine Learning Engineer · AI Tinkerer",
 };
 
 export const verse = {
@@ -64,7 +63,7 @@ export const roles: Role[] = [
     location: "Bengaluru, Karnataka",
     groups: [
       {
-        heading: "Document processing and retrieval",
+        heading: "Search and retrieval",
         items: [
           "Built a document extraction pipeline across more than 20 PDF and HTML parsers, with section hierarchy kept through token-budget chunking. Prototyped LLM-based structure correction for malformed documents.",
           "Improved retrieval recall by 20% on identifier- and keyword-heavy queries with hybrid Milvus dense retrieval and Elasticsearch BM25, using weighted reciprocal rank fusion and denormalized attribute filtering.",
@@ -73,7 +72,7 @@ export const roles: Role[] = [
         ],
       },
       {
-        heading: "Model serving, caching, and scaling",
+        heading: "Model serving and scaling",
         items: [
           "Built a self-hosted vLLM service on Kubernetes for an FP8-quantized 27B model, exposed as an OpenAI-compatible streaming API. It handles 100K+ requests a day. Moving that traffic off a hosted API reduced LLM spend from about $7,000 to $1,000 a month, and batch-size and KV-cache tuning increased throughput per GPU by 67%.",
           "Moved reranker and embedding serving from ONNX Runtime to NVIDIA Triton, with gRPC connection pooling, dynamic batching, and separate priority for query and ingestion. Query latency fell by up to 40×.",
@@ -82,13 +81,13 @@ export const roles: Role[] = [
         ],
       },
       {
-        heading: "Continuous evaluation",
+        heading: "Evaluation",
         items: [
           "Set up LLM-as-a-judge regression tests across customer deployments, checking correctness and semantic faithfulness. This cut manual QA effort by 70%.",
         ],
       },
       {
-        heading: "Also contributed to",
+        heading: "Contributions",
         items: [
           "Streaming ASR over WebSocket using faster-whisper and Qwen3-ASR, with a wav2vec2 check to drop hallucinated transcripts during silence.",
           "PII detection covering 40+ entity types, moving from GLiNER to LLM-based extraction and adding Redis caching.",
